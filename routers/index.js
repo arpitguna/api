@@ -10,9 +10,9 @@ router.get('/',passport.authenticate('jwt',{failureRedirect:'/unauth'}),UserCtrl
 router.get('/unauth',(req,res)=>{
     return res.status(400).json({msg:'login hare!!'})
 })
-router.post('/insertuser',UserCtrl.InsertUser)
-router.delete('/DeleteUser/:id',UserCtrl.DeleteUser)
-router.get('/singleuserdata/:id',UserCtrl.SingleUserData)
+router.post('/insertuser',passport.authenticate('jwt',{failureRedirect:'/unauth'}),UserCtrl.InsertUser)
+router.delete('/DeleteUser/:id',passport.authenticate('jwt',{failureRedirect:'/unauth'}),UserCtrl.DeleteUser)
+router.get('/singleuserdata/:id',passport.authenticate('jwt',{failureRedirect:'/unauth'}),UserCtrl.SingleUserData)
 router.put('/updateuser/:id',UserCtrl.UpdateUser)
 
 

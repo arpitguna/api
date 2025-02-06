@@ -2,7 +2,19 @@ const express = require('express')
 
 const port = 8000;
 
-const db = require('./confing/db')
+// const db = require('./confing/db')
+
+const mongoose = require('mongoose')
+
+mongoose.connect('mongodb+srv://arpitguna150:ARPITGUNA@cluster0.xlyzv.mongodb.net/API', {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+}).then((res) => {
+    console.log('DB is connected');
+}).catch((err) => {
+    console.log('err');
+})
+
 
 const app = express()
 
